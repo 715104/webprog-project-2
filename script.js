@@ -4,7 +4,7 @@
 class SoundSynthesizer {
   constructor() {
     this.ctx = null;
-    this.isMuted = true;
+    this.isMuted = false;
   }
 
   initContext() {
@@ -287,12 +287,13 @@ function computeInsertionSortSteps(initial) {
   const arr = [...initial];
   const n = arr.length;
 
-  steps.push({ array: [...arr], comparing: [], swapping: [], sortedIndices: [0] });
+  // Step 0: Initial unsorted state (no bars green)
+  steps.push({ array: [...arr], comparing: [], swapping: [], sortedIndices: [] });
 
   for (let i = 1; i < n; i++) {
     const key = arr[i];
     let j = i - 1;
-    steps.push({ array: [...arr], comparing: [i], swapping: [], sortedIndices: Array.from({ length: i }, (_, idx) => idx) });
+    steps.push({ array: [...arr], comparing: [i], swapping: [], sortedIndices: [] });
 
     while (j >= 0 && arr[j] > key) {
       steps.push({ array: [...arr], comparing: [j, j + 1], swapping: [], sortedIndices: [] });
@@ -302,9 +303,10 @@ function computeInsertionSortSteps(initial) {
     }
 
     arr[j + 1] = key;
-    steps.push({ array: [...arr], comparing: [j + 1], swapping: [j + 1], sortedIndices: Array.from({ length: i + 1 }, (_, idx) => idx) });
+    steps.push({ array: [...arr], comparing: [j + 1], swapping: [j + 1], sortedIndices: [] });
   }
 
+  // Final step: All bars marked sorted green upon completion
   steps.push({ array: [...arr], comparing: [], swapping: [], sortedIndices: Array.from({ length: n }, (_, idx) => idx) });
   return steps;
 }
@@ -753,7 +755,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // State
   let currentMode = 'menu';
-  let isMuted = true;
+  let isMuted = false;
 
   // Sorting State
   let currentSortAlgo = 'bubble';

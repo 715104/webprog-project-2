@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>Sorting Algorithm Visualizer</title>
-    <meta name="description" content="Interactive algorithm visualizer featuring sorting algorithms, pathfinding on weighted grids, complexity analysis, and audio synthesis." />
-    <meta property="og:title" content="Algorithm Visualizer" />
-    <meta property="og:description" content="Interactive algorithm visualizer featuring sorting algorithms, pathfinding on weighted grids, complexity analysis, and audio synthesis." />
+    <meta name="description" content="Interactive sorting algorithm visualizer featuring bar visualization, step tracking, complexity analysis, and speed controls." />
+    <meta property="og:title" content="Sorting Algorithm Visualizer" />
+    <meta property="og:description" content="Interactive sorting algorithm visualizer featuring bar visualization, step tracking, complexity analysis, and speed controls." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body class="bg-black text-neutral-100 min-h-screen flex flex-col font-sans selection:bg-neutral-800 selection:text-white overflow-x-hidden">
@@ -50,11 +51,11 @@
           title="Toggle Sound"
           class="p-1.5 rounded-lg border border-neutral-800 bg-neutral-900/60 text-neutral-400 hover:text-white transition-colors cursor-pointer"
         >
-          <!-- Muted icon default -->
-          <svg id="audio-icon-muted" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Audio Icon (unmuted default) -->
+          <svg id="audio-icon-muted" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M11 5 6 9H2v6h4l5 4V5Z"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/>
           </svg>
-          <svg id="audio-icon-unmuted" class="w-4 h-4 hidden text-neutral-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg id="audio-icon-unmuted" class="w-4 h-4 text-neutral-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
           </svg>
         </button>
